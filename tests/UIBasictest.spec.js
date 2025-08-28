@@ -96,7 +96,7 @@ test('Child Window Handling', async ({ browser }) => {
   await username.fill(domain); 
   await page.screenshot({ path: 'screenshot.png' });
   await page.pause();
-  console.log(await username.textContent());
+  console.log(await username.inputValue());  // diffrerence between textContent and inputValue, textContent is for getting text of any element in the DOM, inputValue is for getting value from input field
 
 
 });
