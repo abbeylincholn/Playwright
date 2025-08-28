@@ -72,6 +72,35 @@ test.only('UI Controls', async ({ page }) => {
 });
 
 
+test('Child Window Handling', async ({ browser }) => {
+  
+  const context = await browser.newContext();  
+  const page = await context.newPage();
+  const username = page.locator('#username');
+  await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
+  const documentLink = page.locator("[href*='documents-request']");
+
+  const [newPage] = await Promise.all(  // array destructuring
+   [
+    context.waitForEvent('page'), // listening for new page pending, rejected and fulfilled promises // asynchhronous event
+    documentLink.click(),  // new tab is opened page
+
+   ]) // new page object
+  
+  const text = await newPage.locator(".red").textContent();
+  console.log(text);
+  const arrayText = text.split("@");
+  const domain = arrayText[1].split(" ")[0];
+  //console.log(domain);
+  //await page.locator("#username").fill(domain);
+  await username.fill(domain); 
+  await page.screenshot({ path: 'screenshot.png' });
+  await page.pause();
+  console.log(await username.textContent());
+
+
+});
+
 
 
 
