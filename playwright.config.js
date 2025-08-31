@@ -1,5 +1,6 @@
 
 import { defineConfig, devices } from '@playwright/test';
+import { trace } from 'console';
 
 
 /**
@@ -17,6 +18,10 @@ const confit = ({
     
     browserName: 'chromium',
     headless: false,
+    screenshot: 'only on-failure', 
+    trace: 'retain-on-failure'
+
+    //trace: 'on'
   },  
 });
 

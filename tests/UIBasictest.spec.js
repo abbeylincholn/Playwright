@@ -31,7 +31,7 @@ test('Browser Context-Validating Error login', async ({ browser }) => {
   await page.locator('#password').fill('learning');
   await page.locator('#signInBtn').click();
   console.log(await page.locator("[style*='block']").textContent());
-  await expect(page.locator("[style*='block']")).toContainText("Incorrect");
+  await expect(page.locator("[style*='block']")).toContainText("Incorrectvvvrffrfrfr");
 
   await username.fill('');  // clear the username field
   await username.fill('rahulshettyacademy');
@@ -47,7 +47,7 @@ const allTitles = await cardTitles.allTextContents();
 });
 
 
-test.only('UI Controls', async ({ page }) => {
+test('UI Controls', async ({ page }) => {
   await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
   await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
   
@@ -95,7 +95,7 @@ test('Child Window Handling', async ({ browser }) => {
   //await page.locator("#username").fill(domain);
   await username.fill(domain); 
   await page.screenshot({ path: 'screenshot.png' });
-  await page.pause();
+  //await page.pause();
   console.log(await username.inputValue());  // diffrerence between textContent and inputValue, textContent is for getting text of any element in the DOM, inputValue is for getting value from input field
 
 
