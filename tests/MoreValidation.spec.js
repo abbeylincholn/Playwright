@@ -18,4 +18,9 @@ test ('Popup Validation', async ({page})=>{
     await page.locator("#confirmbtn").click();
     //page.on('dialog', dialog => dialog.dismiss());
 
+    await page.locator("#mousehover").hover();
+
+
+
+
 })
