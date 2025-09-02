@@ -26,64 +26,30 @@ Test objective = verify the UI can create that data? Do it through the UI, no AP
  **/
 
 const { test, expect, request } = require('@playwright/test');     
-const { log } = require('console');
-const { emit } = require('process');
+const { APIUtils } = require('./utils/APIUtils');
 
 
 const loginPayload = {userEmail: "anshika@gmail.com", userPassword: "Iamking@000"};
 const orderPayload = {orders: [{country: "Cuba", productOrderedId: "68b59b5cf669d6cb0aabdf72"}]};
 
-let token;
-let orderId;
+
+let response;
 
 test.beforeAll( async () => {
-
-    // Login API call
+    // API context
    const apiContext =  await request.newContext();
-   const loginResponse = await apiContext.post("https://rahulshettyacademy.com/api/ecom/auth/login", 
-    {
-        data: loginPayload
-    });
-    expect(loginResponse.ok()).toBeTruthy();
-    const loginResponseJson = await loginResponse.json();
-    console.log(loginResponseJson);
-    token = loginResponseJson.token;    
-    console.log(token);
-    expect(loginResponseJson.message).toBe("Login Successfully");
+   const apiUtils = new APIUtils(apiContext, loginPayload);
+   response = await apiUtils.createOrder(orderPayload);
+})
 
-    // Create Order API call
-    const orderResponse = await apiContext.post("https://rahulshettyacademy.com/api/ecom/order/create-order", 
-    {
-        data: orderPayload,
-        headers: {
-            'Authorization': token,
-            'Content-Type': 'application/json'
-        }
-    });
-   
-    const orderResponseJson = await orderResponse.json();
-    orderId = orderResponseJson.orders[0];
-
-    console.log(orderResponseJson);   
-    console.log(orderResponseJson.orders[0]);
-
-    expect(orderResponse.ok()).toBeTruthy();
-    expect(orderResponseJson.message).toBe("Order Placed Successfully");
-
-
-});
-
-
-test.beforeEach( () => {
-    
-});
   
      
 test('Place An Order', async ({ page }) => {
  
-       page.addInitScript( value => {
+
+      await page.addInitScript( value => {
         window.localStorage.setItem('token', value);
-       }, token);   // this function and the parameter 'value' are passed to the browser context, this will bypass the login page,  also to order summary page               
+       }, response.token);   // this function and the parameter 'value' are passed to the browser context, this will bypass the login page,  also to order summary page               
       
        await page.goto("https://rahulshettyacademy.com/client");   
     
@@ -93,14 +59,14 @@ test('Place An Order', async ({ page }) => {
       const rows = page.locator("tbody tr");
       for (let i = 0; i < await rows.count(); ++i) {
         const rowOrderId = await rows.nth(i).locator("th").textContent();
-        if (orderId.includes(rowOrderId)) {
+        if (response.orderId.includes(rowOrderId)) {
           await rows.nth(i).locator("button").first().click();
           break;
         }
       }      
       const orderIdDetails = await page.locator(".col-text").textContent();
-      await page.pause();
-      expect(orderId.includes(orderIdDetails)).toBeTruthy();
+      //await page.pause();
+      expect(response.orderId.includes(orderIdDetails)).toBeTruthy();
       console.log(orderIdDetails);
 
     })
