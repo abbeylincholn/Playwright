@@ -13,7 +13,7 @@ test('@QW Security test request intercept', async ({ page }) => {
  
     await page.locator("button[routerlink*='myorders']").click();
     await page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=*",
-        route => route.continue({ url: 'https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=621661f884b053f6765465b6' }))
+        route => route.continue({ url: 'https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=621661f884b053f6765465b6' }))  // intercepting the request and changing the order id for security test
     await page.locator("button:has-text('View')").first().click();
     await expect(page.locator("p").last()).toHaveText("You are not authorize to view this order");
     })
