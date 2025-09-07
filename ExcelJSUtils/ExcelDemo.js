@@ -15,26 +15,32 @@ const ExcelJs = require('exceljs');
 // or 
 
 // read file
-async function readExcel() {    
-
-    let output = {row:-1, column:-1};
+async function writeExcelTest(searchText, replaceText , filePath) {    
+    
     const workbook = new ExcelJs.Workbook();
-    await workbook.xlsx.readFile("C:/Users/abbey/Downloads/download.xlsx");
-    const worksheet = workbook.getWorksheet('Sheet1');
-    worksheet.eachRow((row, rowNumber) => {
-        row.eachCell((cell, colNumber) => {
-            if (cell.value === "Banana") {
-                output.row = rowNumber;
-                output.column = colNumber;       
-            }
-        })
-    })
-
+    await workbook.xlsx.readFile(filePath);
+    const worksheet = workbook.getWorksheet('Sheet1');   
+    const output = await readExcel(worksheet, searchText);
 
     // update file
     const cell = worksheet.getCell(output.row, output.column);
-    cell.value = "Grapes";
-    await workbook.xlsx.writeFile("C:/Users/abbey/Downloads/download.xlsx");
+    cell.value = replaceText;
+    await workbook.xlsx.writeFile(filePath);
 }
 
-readExcel();
+ async function readExcel(worksheet, searchText) {
+            let output = {row:0, column:0};
+            worksheet.eachRow((row, rowNumber) => {
+            row.eachCell((cell, colNumber) => {
+                if (cell.value === searchText) {
+                    output.row = rowNumber;
+                    output.column = colNumber;       
+                }
+            })
+        })
+        return output;
+    }
+    
+    
+
+writeExcelTest("Tangarine", "Carrot", "C:/Users/abbey/Downloads/download.xlsx");
