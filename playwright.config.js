@@ -10,7 +10,7 @@ const confit = ({
   testDir: './tests',
   timeout: 40 * 1000,  // evertest case timeout
   expect: {
-    timeout: 5000  // assertion timeout
+    timeout: 8000  // assertion timeout
   },
   reporter: 'html',
   

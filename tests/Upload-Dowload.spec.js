@@ -28,7 +28,8 @@ async function readExcel(worksheet, searchText) {
 
 // update Mango Price to 350
 test('Upload - Download excel validation', async ({ page }, testInfo) => {
-    
+    const textSearch = 'Mango';
+    const updateValue = '350';
   await page.goto('https://rahulshettyacademy.com/upload-download-test/index.html');
 
   // === your requested snippet ===
@@ -43,4 +44,8 @@ test('Upload - Download excel validation', async ({ page }, testInfo) => {
 
   await page.locator('#fileinput').click();
   await page.locator('#fileinput').setInputFiles(filePath);
+
+  const textLocator = page.getByText(textSearch)
+  const desireRow = await page.getByRole('row').filter({ has: textLocator });
+  await expect (desireRow.locator("#cell-4-undefined")).toContainText(updateValue)
 });
