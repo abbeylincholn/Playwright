@@ -29,7 +29,7 @@ test ('Popup Validation', async ({page})=>{
 
 })
 
-test.only ('Screenshot & Visual comparison', async ({page, context})=>{
+test('Screenshot & Visual comparison', async ({page, context})=>{
 
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/")  
     await expect(page.locator("#displayed-text")).toBeVisible();
@@ -39,3 +39,21 @@ test.only ('Screenshot & Visual comparison', async ({page, context})=>{
     await expect(page.locator("#displayed-text")).toBeHidden();
 
 });
+
+//  screenshot - store -> screenshot 
+test.only ('Visual comparison', async ({page})=>{
+
+    await page.goto('https://www.google.com/');    
+    expect (await page.screenshot()).toMatchSnapshot('flight.png');
+
+});
+
+
+test.only('Visual comparison1', async ({ page }) => {
+  await page.goto('https://www.flightaware.com/');
+  await page.waitForLoadState('networkidle');     // wait for network to settle
+  const shot = await page.screenshot({ fullPage: true });
+  expect(shot).toMatchSnapshot('rediff.png');
+});
+
+
