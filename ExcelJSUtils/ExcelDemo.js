@@ -16,23 +16,24 @@ const ExcelJs = require('exceljs');
 
 // read file
 async function readExcel() {    
+
+    let output = {row:-1, column:-1};
     const workbook = new ExcelJs.Workbook();
     await workbook.xlsx.readFile("C:/Users/abbey/Downloads/download.xlsx");
     const worksheet = workbook.getWorksheet('Sheet1');
     worksheet.eachRow((row, rowNumber) => {
         row.eachCell((cell, colNumber) => {
-            if (cell.value === "Apple") {
-                console.log(rowNumber);
-                console.log(colNumber);
-
+            if (cell.value === "Banana") {
+                output.row = rowNumber;
+                output.column = colNumber;       
             }
         })
     })
 
 
     // update file
-    const cell = worksheet.getCell(3,2);
-    cell.value = "Pineapple";
+    const cell = worksheet.getCell(output.row, output.column);
+    cell.value = "Grapes";
     await workbook.xlsx.writeFile("C:/Users/abbey/Downloads/download.xlsx");
 }
 
