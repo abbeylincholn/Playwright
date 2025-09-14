@@ -1,5 +1,6 @@
 const {test, expect} = require('@playwright/test');
 
+
 test ('Popup Validation', async ({page})=>{
 
 
@@ -41,7 +42,7 @@ test('Screenshot & Visual comparison', async ({page, context})=>{
 });
 
 //  screenshot - store -> screenshot 
-test.only ('Visual comparison', async ({page})=>{
+test('Visual comparison', async ({page})=>{
 
     await page.goto('https://www.google.com/');    
     expect (await page.screenshot()).toMatchSnapshot('flight.png');
@@ -49,11 +50,11 @@ test.only ('Visual comparison', async ({page})=>{
 });
 
 
-test.only('Visual comparison1', async ({ page }) => {
+test('Visual comparison1', async ({ page }) => {
   await page.goto('https://www.flightaware.com/');
   await page.waitForLoadState('networkidle');     // wait for network to settle
   const shot = await page.screenshot({ fullPage: true });
-  expect(shot).toMatchSnapshot('rediff.png');
+  expect(shot).toMatchSnapshot('flight1.png');
 });
 
 

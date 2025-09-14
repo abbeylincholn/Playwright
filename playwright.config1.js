@@ -25,6 +25,7 @@ const confit = ({
         screenshot: 'only-on-failure',
         trace: 'on',
         video : 'retain-on-failure',
+        //workers: 5
         //viewport : { width: 720, height: 720}
       }
     },
@@ -36,7 +37,7 @@ const confit = ({
         headless: true,
         screenshot: 'off',
         trace: 'on',
-        ignoreHTTPSErrors: true,
+        ignoreHTTPSErrors: true,        
         permissions: ['geolocation'],
 
        // ...devices['iPhone 11']  // to run the test in mobile view
