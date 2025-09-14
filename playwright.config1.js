@@ -21,9 +21,10 @@ const confit = ({
 
         browserName: 'chromium',
         headless: false,
-        screenshot: 'off',
+        screenshot: 'only on-failure',
         trace: 'on',
-        //viewport : { width: 720, height: 720}
+        video : 'retain-on-failure',
+        viewport : { width: 720, height: 720}
       }
     },
     {
