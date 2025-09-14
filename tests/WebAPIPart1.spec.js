@@ -44,7 +44,7 @@ test.beforeAll( async () => {
 
   
      
-test('Place An Order', async ({ page }) => {
+test('@API Place An Order', async ({ page }) => {
  
 
       await page.addInitScript( value => {

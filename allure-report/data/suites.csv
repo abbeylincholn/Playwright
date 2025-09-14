@@ -1,0 +1,6 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","17705","@Web Client App login","","Sun Sep 14 14:33:50 BST 2025","failed","Sun Sep 14 14:34:07 BST 2025","","E2E2.spec.js","",""
+"","1572","@Web Google Homepage Test","","Sun Sep 14 14:33:50 BST 2025","passed","Sun Sep 14 14:33:51 BST 2025","","UIBasictest.spec.js","",""
+"","10569","@Web Client App login","","Sun Sep 14 14:33:50 BST 2025","passed","Sun Sep 14 14:34:00 BST 2025","","E2E1.spec.js","",""
+"","11432","@Web Client App login","","Sun Sep 14 14:33:50 BST 2025","passed","Sun Sep 14 14:34:01 BST 2025","","E2E.spec.js","",""
+"","6233","@Web Client App login","","Sun Sep 14 14:33:50 BST 2025","passed","Sun Sep 14 14:33:56 BST 2025","","ClientApp.spec.js","",""

@@ -5,7 +5,7 @@ test.describe.configure({mode:'parallel'})
 // Use serial mode if tests in this describe block depend on each other.
 // They will run sequentially, and if one fails, the rest are skipped.
 
-test ('Popup Validation', async ({page})=>{
+test ('@Web Popup Validation', async ({page})=>{
 
 
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/")
@@ -46,7 +46,7 @@ test('Screenshot & Visual comparison', async ({page, context})=>{
 });
 
 //  screenshot - store -> screenshot 
-test('Visual comparison', async ({page})=>{
+test('@Web Visual comparison', async ({page})=>{
 
     await page.goto('https://www.google.com/');    
     expect (await page.screenshot()).toMatchSnapshot('flight.png');

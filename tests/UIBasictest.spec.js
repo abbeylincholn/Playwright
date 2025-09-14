@@ -3,7 +3,7 @@ const { test, expect } = require('@playwright/test');
 
 
 
-test('Google Homepage Test', async ({ page }) => {
+test('@Web Google Homepage Test', async ({ page }) => {
   await page.goto('https://www.google.com'); // include https://
   //get page title
   console.log(await page.title());

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test tests/WebAPIPart1.spec.js --headed"   
+    "test": "npx playwright test tests/WebAPIPart1.spec.js --headed"
   },
   "keywords": [],
   "author": "",
@@ -12,7 +12,9 @@
   "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.54.2",
-    "@types/node": "^24.1.0"
+    "@types/node": "^24.1.0",
+    "allure-commandline": "^2.34.1",
+    "allure-playwright": "^3.4.1"
   },
   "dependencies": {
     "exceljs": "^4.4.0"
