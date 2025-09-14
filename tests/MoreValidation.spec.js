@@ -1,5 +1,9 @@
 const {test, expect} = require('@playwright/test');
 
+test.describe.configure({mode:'parallel'})
+//test.describe.configure({mode:'serial'})  // you can use this if you have interdependent test, to avoid next test failing, it will just skip it.
+// Use serial mode if tests in this describe block depend on each other.
+// They will run sequentially, and if one fails, the rest are skipped.
 
 test ('Popup Validation', async ({page})=>{
 

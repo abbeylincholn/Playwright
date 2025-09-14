@@ -25,7 +25,7 @@ const confit = ({
         screenshot: 'only-on-failure',
         trace: 'on',
         video : 'retain-on-failure',
-        //workers: 5
+        //workers: 1,
         //viewport : { width: 720, height: 720}
       }
     },
