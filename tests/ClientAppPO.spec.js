@@ -1,37 +1,37 @@
 
-const { test, expect } = require('@playwright/test');      
-const {POManager} = require('../pageobjects/POManager');
+const { test, expect } = require('@playwright/test');
+const { POManager } = require('../pageobjects/POManager');
 // json -> string -> js object
-const dataset = JSON.parse(JSON.stringify(require("../utils/placeorderTestData.json")));  // Convert JSON file data to object and catch in variable
+const dataset = JSON.parse(JSON.stringify(require('../utils/placeorderTestData.json')));
 
+for (const data of dataset)   // Loop through the data sets
+{
+  test(`Client App login PO for ${data.productName}` , async ({ page }) => {
 
+    const poManager = new POManager(page);
 
-test('Client App login PO', async ({ page }) => {
- 
-      const poManager = new POManager(page);    
+    const loginPage = poManager.getLoginPage();
+    await loginPage.goTo();
+    await loginPage.validLogin(data.username, data.password);
 
-      const loginPage = poManager.getLoginPage();
-      await loginPage.goTo();
-      await loginPage.validLogin(dataset.username, dataset.password);   
-      
-      const dashBoardPage = poManager.getDashBoardPage();    
-      await dashBoardPage.searchProduct_AddCart(dataset.productName);  
-      await dashBoardPage.goToCartPage();
-      
-      const cartPage = poManager.getCartPage();
-      await cartPage.VerifyProductIsDisplayed(dataset.productName);
-      await cartPage.Checkout();
+    const dashBoardPage = poManager.getDashBoardPage();
+    await dashBoardPage.searchProduct_AddCart(data.productName);
+    await dashBoardPage.goToCartPage();
 
-      const ordersReviewPage = poManager.getOrdersReviewPage();
-      await ordersReviewPage.searchCountryAndSelect("ind","India");
-      await ordersReviewPage.VerifyEmailId(dataset.username);
-      const orderId = await ordersReviewPage.SubmitAndGetOrderId();      
-      console.log(orderId);       
- 
-      await dashBoardPage.navigateToOrders();
-      const ordersHistoryPage = poManager.getOrdersHistoryPage();
-      await ordersHistoryPage.searchOrderAndSelect(orderId);
-      expect(orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
-      
+    const cartPage = poManager.getCartPage();
+    await cartPage.VerifyProductIsDisplayed(data.productName);
+    await cartPage.Checkout();
 
-    })
+    const ordersReviewPage = poManager.getOrdersReviewPage();
+    await ordersReviewPage.searchCountryAndSelect("ind", "India");
+    await ordersReviewPage.VerifyEmailId(data.username);
+    const orderId = await ordersReviewPage.SubmitAndGetOrderId();
+    console.log(orderId);
+
+    await dashBoardPage.navigateToOrders();
+    const ordersHistoryPage = poManager.getOrdersHistoryPage();
+    await ordersHistoryPage.searchOrderAndSelect(orderId);
+    expect(orderId.includes(await ordersHistoryPage.getOrderId())).toBeTruthy();
+
+  });
+}
