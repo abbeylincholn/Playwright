@@ -37,7 +37,7 @@ for (const data of dataset)   // Loop through the data sets
   });
 }
 
-customtest.only(`Client App PO Custom`, async ({ page,testDataForOrder }) => {
+customtest(`Client App PO Custom`, async ({ page,testDataForOrder }) => {
 
     const poManager = new POManager(page);
 

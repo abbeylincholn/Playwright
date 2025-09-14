@@ -9,6 +9,7 @@ import { permission } from 'process';
  */
 const confit = ({
   testDir: './tests',
+  retries: 1,  // retry failed test once
   timeout: 40 * 1000,  // evertest case timeout
   expect: {
     timeout: 8000  // assertion timeout
@@ -21,10 +22,10 @@ const confit = ({
 
         browserName: 'chromium',
         headless: false,
-        screenshot: 'only on-failure',
+        screenshot: 'only-on-failure',
         trace: 'on',
         video : 'retain-on-failure',
-        viewport : { width: 720, height: 720}
+        //viewport : { width: 720, height: 720}
       }
     },
     {
@@ -32,7 +33,7 @@ const confit = ({
       use: {
 
         browserName: 'webkit',
-        headless: false,
+        headless: true,
         screenshot: 'off',
         trace: 'on',
         ignoreHTTPSErrors: true,
