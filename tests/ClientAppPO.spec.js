@@ -1,8 +1,9 @@
 
 const { test, expect } = require('@playwright/test');
+const { customtest } = require('../utils/test-base');
+
 const { POManager } = require('../pageobjects/POManager');
-// json -> string -> js object
-const dataset = JSON.parse(JSON.stringify(require('../utils/placeorderTestData.json')));
+const dataset = JSON.parse(JSON.stringify(require('../utils/placeorderTestData.json')));   // json -> string -> js object
 
 for (const data of dataset)   // Loop through the data sets
 {
@@ -35,3 +36,21 @@ for (const data of dataset)   // Loop through the data sets
 
   });
 }
+
+customtest.only(`Client App PO Custom`, async ({ page,testDataForOrder }) => {
+
+    const poManager = new POManager(page);
+
+    const loginPage = poManager.getLoginPage();
+    await loginPage.goTo();
+    await loginPage.validLogin(testDataForOrder.username, testDataForOrder.password);
+
+    const dashBoardPage = poManager.getDashBoardPage();
+    await dashBoardPage.searchProduct_AddCart(testDataForOrder.productName);
+    await dashBoardPage.goToCartPage();
+
+    const cartPage = poManager.getCartPage();
+    await cartPage.VerifyProductIsDisplayed(testDataForOrder.productName);
+    await cartPage.Checkout();    
+
+  });
