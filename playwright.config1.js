@@ -1,6 +1,7 @@
 
 import { defineConfig, devices } from '@playwright/test';
 import { trace } from 'console';
+import { permission } from 'process';
 
 
 /**
@@ -19,9 +20,10 @@ const confit = ({
       use: {
 
         browserName: 'chromium',
-        headless: true,
+        headless: false,
         screenshot: 'off',
-        trace: 'on'
+        trace: 'on',
+        //viewport : { width: 720, height: 720}
       }
     },
     {
@@ -29,9 +31,14 @@ const confit = ({
       use: {
 
         browserName: 'webkit',
-        headless: true,
-        screenshot: 'only on-failure',
-        trace: 'on'
+        headless: false,
+        screenshot: 'off',
+        trace: 'on',
+        ignoreHTTPSErrors: true,
+        permissions: ['geolocation'],
+
+       // ...devices['iPhone 11']  // to run the test in mobile view
+        
       }
     },
   ]
