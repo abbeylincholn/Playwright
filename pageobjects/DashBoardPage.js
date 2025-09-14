@@ -1,3 +1,4 @@
+
 class DashBoardPage {
 
 
@@ -5,6 +6,7 @@ class DashBoardPage {
         this.page = page;
         this.products = page.locator(".card-body");
         this.productsText = page.locator(".card-body b");
+         this.orders = page.locator("button[routerlink*='myorders']");
         this.cart = page.locator("[routerlink*='cart']");           
     }
 
@@ -15,13 +17,20 @@ class DashBoardPage {
       for (let i = 0; i < count; ++i) {
         if (await this.products.nth(i).locator("b").textContent() === productName) 
           { // add to cart
-          await this.products.nth(i).locator("text= Add To Cart").click();       
+          await this.products.nth(i).locator("text= Add To Cart").click();             
           break;
         }
       }
     }
 
+    async navigateToOrders()
+{
+    await this.orders.click();
+}
+
+
     async goToCartPage() {
+      
       await this.cart.click();
     }
 }

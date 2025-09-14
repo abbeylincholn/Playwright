@@ -26,7 +26,7 @@ Test objective = verify the UI can create that data? Do it through the UI, no AP
  **/
 
 const { test, expect, request } = require('@playwright/test');     
-const { APIUtils } = require('./utils/APIUtils');
+const { APIUtils } = require('../utils/APIUtils');
 
 
 const loginPayload = {userEmail: "anshika@gmail.com", userPassword: "Iamking@000"};
