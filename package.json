@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "npx playwright test tests/WebAPIPart1.spec.js --headed"
-  },
+ "scripts": {
+  "regression": "npx playwright test",
+  "webTests": "npx playwright test --grep @Web --config playwright.config1.js --project=chrome",
+  "APITests" : "npx playwright test --grep @API",
+  "ChromeNewConfig": "npx playwright test tests/MoreValidation.spec.js --config playwright.config1.js --project=chrome"
+},
+
   "keywords": [],
   "author": "",
   "license": "ISC",

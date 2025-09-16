@@ -14,17 +14,22 @@ const confit = ({
   expect: {
     timeout: 8000  // assertion timeout
   },
-  reporter: 'html',
+  reporter: [
+    ['line'],                // console output
+    ['html'],                // Playwright's own HTML report
+    ['allure-playwright']    // Allure results in ./allure-results
+  ],
+
   projects: [
     {
       name: 'chrome',
       use: {
 
         browserName: 'chromium',
-        headless: false,
+        headless: true,
         screenshot: 'only-on-failure',
         trace: 'on',
-        video : 'retain-on-failure',
+        video: 'retain-on-failure',
         //workers: 1,
         //viewport : { width: 720, height: 720}
       }
@@ -37,11 +42,11 @@ const confit = ({
         headless: true,
         screenshot: 'off',
         trace: 'on',
-        ignoreHTTPSErrors: true,        
+        ignoreHTTPSErrors: true,
         permissions: ['geolocation'],
 
-       // ...devices['iPhone 11']  // to run the test in mobile view
-        
+        // ...devices['iPhone 11']  // to run the test in mobile view
+
       }
     },
   ]

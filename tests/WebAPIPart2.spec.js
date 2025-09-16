@@ -90,7 +90,7 @@ test('Client App login', async () => {
       expect(orderId.includes(orderIdDetails)).toBeTruthy();
       console.log(orderIdDetails);
 
-      await page.pause();
+     // await page.pause();
     })
 
 
@@ -107,6 +107,6 @@ test('Client App login', async () => {
        await page.locator(".card-body b").first().waitFor();
        const titles = await page.locator(".card-body b").allTextContents();
        console.log(titles); 
-       await page.pause();
+      // await page.pause();
 
     })

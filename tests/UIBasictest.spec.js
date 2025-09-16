@@ -31,7 +31,7 @@ test('Browser Context-Validating Error login', async ({ browser }) => {
   await page.locator('#password').fill('learning');
   await page.locator('#signInBtn').click();
   console.log(await page.locator("[style*='block']").textContent());
-  await expect(page.locator("[style*='block']")).toContainText("Incorrectvvvrffrfrfr");
+  await expect(page.locator("[style*='block']")).toContainText("Incorrect");
 
   await username.fill('');  // clear the username field
   await username.fill('rahulshettyacademy');

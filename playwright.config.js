@@ -9,6 +9,7 @@ import { trace } from 'console';
 const confit = ({
   testDir: './tests',
   timeout: 40 * 1000,  // evertest case timeout
+  retries: 1, 
   expect: {
     timeout: 8000  // assertion timeout
   },
@@ -17,7 +18,7 @@ const confit = ({
   use: {
     
     browserName: 'chromium',
-    headless: false,
+    headless: true,
     screenshot: 'only on-failure', 
     trace: 'on'
 

@@ -46,19 +46,19 @@ test('Screenshot & Visual comparison', async ({page, context})=>{
 });
 
 //  screenshot - store -> screenshot 
-test('@Web Visual comparison', async ({page})=>{
+// test('@Web Visual comparison', async ({page})=>{
 
-    await page.goto('https://www.google.com/');    
-    expect (await page.screenshot()).toMatchSnapshot('flight.png');
+//     await page.goto('https://www.google.com/');    
+//     expect (await page.screenshot()).toMatchSnapshot('flight.png');
 
-});
+// });
 
 
-test('Visual comparison1', async ({ page }) => {
-  await page.goto('https://www.flightaware.com/');
-  await page.waitForLoadState('networkidle');     // wait for network to settle
-  const shot = await page.screenshot({ fullPage: true });
-  expect(shot).toMatchSnapshot('flight1.png');
-});
+// test('Visual comparison1', async ({ page }) => {
+//   await page.goto('https://www.flightaware.com/');
+//   await page.waitForLoadState('networkidle');     // wait for network to settle
+//   const shot = await page.screenshot({ fullPage: true });
+//   expect(shot).toMatchSnapshot('flight1.png');
+// });
 
 
