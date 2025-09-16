@@ -9,22 +9,31 @@ import { trace } from 'console';
 const confit = ({
   testDir: './tests',
   timeout: 40 * 1000,  // evertest case timeout
-  retries: 1, 
+  retries: 1, // flaky = test passes on retry; set >0 so Playwright can mark flaky
   expect: {
     timeout: 8000  // assertion timeout
   },
-  reporter: 'html',
+
+   // Multi-reporter: list (console), github (annotations), html (artefact)
+    reporter: [
+    ['list'],
+    ['github'],
+    ['html', { outputFolder: 'playwright-report', open: 'never' }],
+  ],
   
   use: {
     
     browserName: 'chromium',
     headless: true,
     screenshot: 'only on-failure', 
-    trace: 'on'
+    trace: 'on'  // keep traces only when a test fails
 
     //trace: 'on'
   },  
 });
 
 module.exports = defineConfig(confit);
+
+
+
 
