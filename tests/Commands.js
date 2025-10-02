@@ -13,5 +13,6 @@
 // npx playwright test --grep @Web //
 //npm install -D allure-playwright
 //npx playwright test --grep @Web --reporter=line,allure-playwright
+//npm install -D allure-commandline
 //npx allure generate ./allure-results --clean -o ./allure-report
 //npx allure open ./allure-report

@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 
 test('@Web Calender validation', async ({ page }) => {
 
-const monthNumber = "6";
+const monthNumber = "10";
 const date = "15";
 const year = "2027";
 const expectedDate = [monthNumber, date, year];

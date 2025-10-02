@@ -23,7 +23,7 @@ test ('@Web Popup Validation', async ({page})=>{
     await page.locator("#confirmbtn").click();
     //page.on('dialog', dialog => dialog.dismiss());
 
-    // Mouse hover
+    // Mouse hover.
     await page.locator("#mousehover").hover();
 
     // Handling iFrame

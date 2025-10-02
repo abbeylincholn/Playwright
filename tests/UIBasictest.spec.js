@@ -58,6 +58,7 @@ test('UI Controls', async ({ page }) => {
   const userDropdown = page.locator("select.form-control");
   await userDropdown.selectOption('consult'); 
   await page.locator(".radiotextsty").last().click();
+  await page.pause()
   await page.locator("#okayBtn").click();
   await expect(page.locator(".radiotextsty").last()).toBeChecked();
   console.log( await page.locator(".radiotextsty").last().isChecked());

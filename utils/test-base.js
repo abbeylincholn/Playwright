@@ -4,8 +4,8 @@ exports.customtest = base.test.extend({
     // Define shared fixtures here
 
     testDataForOrder: {
-        username: "anshika@gmail.com",
-        password: "Iamking@000",
-        productName: "ZARA COAT 3"
+        "username": "abbey@gmail.com",
+        "password": "Iamking@000",
+        "productName": "ZARA COAT 3"
     },
 });

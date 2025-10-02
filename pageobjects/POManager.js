@@ -18,7 +18,7 @@ class POManager {
 
     getLoginPage() {
         return this.loginPage;
-    }
+    }z
     
     getDashBoardPage() {
         return this.dashBoardPage;
@@ -35,6 +35,8 @@ class POManager {
     getOrdersHistoryPage() {
         return this.ordersHistoryPage;
     }
+    
+    
 
 }
 
