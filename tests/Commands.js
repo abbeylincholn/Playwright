@@ -16,3 +16,26 @@
 //npm install -D allure-commandline
 //npx allure generate ./allure-results --clean -o ./allure-report
 //npx allure open ./allure-report
+//npm install --save-dev typescript
+
+
+// # Remove Playwright’s cached browsers for the current user
+// rm -rf ~/.cache/ms-playwright
+
+// # (Optional) If you’re using a CI user like `node` inside a container:
+// sudo rm -rf /home/node/.cache/ms-playwright
+
+// # Remove Playwright binaries if installed globally (just to be safe)
+// rm -rf node_modules/.cache/ms-playwright
+// # Clean reinstall all Node modules
+// rm -rf node_modules package-lock.json
+// npm install
+
+// # Reinstall all Playwright browsers (Chromium, Firefox, WebKit)
+// npx playwright install --with-deps
+
+// # Check what browsers are installed
+// npx playwright install --list
+
+// # Run your tests again
+// npx playwright test
