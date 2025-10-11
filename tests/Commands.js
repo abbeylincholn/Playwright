@@ -29,7 +29,12 @@
 // rm -rf node_modules/.cache/ms-playwright
 // # Clean reinstall all Node modules
 // rm -rf node_modules package-lock.json
+
+// remove and reinstall all node modules
+// rmdir /s /q node_modules
+// del /f /q package-lock.json
 // npm install
+//npx playwright install
 
 // # Reinstall all Playwright browsers (Chromium, Firefox, WebKit)
 // npx playwright install --with-deps
@@ -39,3 +44,4 @@
 
 // # Run your tests again
 // npx playwright test
+
