@@ -8,6 +8,6 @@ test('Fixtures and Context Demo', async ({ browser }) => {
     await page.pause();
 })
 
-test.only('Fixtures and Context Demo Page Fixtures', async ({ page }) => {
-    await page.goto("https://google.com")
-})
+// test.only('Fixtures and Context Demo Page Fixtures', async ({ page }) => {
+//     await page.goto("https://google.com")
+// })

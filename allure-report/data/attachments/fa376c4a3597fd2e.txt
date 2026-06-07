@@ -1,0 +1,10 @@
+[
+  'Laptop',
+  'Automation Product',
+  'Automation Product',
+  'Automation Product',
+  'Automation Product',
+  'ADIDAS ORIGINAL',
+  'ZARA COAT 3',
+  'iphone 13 pro'
+]

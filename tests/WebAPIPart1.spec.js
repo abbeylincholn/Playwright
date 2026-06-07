@@ -49,7 +49,7 @@ test('@API Place An Order', async ({ page }) => {
 
       await page.addInitScript( value => {
         window.localStorage.setItem('token', value);
-       }, response.token);   // this function and the parameter 'value' are passed to the browser context, this will bypass the login page,  also to order summary page               
+       }, token);   // this function and the parameter 'value' are passed to the browser context, this will bypass the login page,  also to order summary page               
       
        await page.goto("https://rahulshettyacademy.com/client");   
     

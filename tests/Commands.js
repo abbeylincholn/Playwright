@@ -13,6 +13,7 @@
 // npx playwright test --grep @Web //
 //npm install -D allure-playwright
 //npx playwright test --grep @Web --reporter=line,allure-playwright
+//yarn allure generate ./allure-results --clean -o ./allure-report
 //npm install -D allure-commandline
 //npx allure generate ./allure-results --clean -o ./allure-report
 //npx allure open ./allure-report
@@ -45,3 +46,33 @@
 // # Run your tests again
 // npx playwright test
 
+//tsc demo.ts 
+//tsc --init // to create tsconfig.json file
+
+//npx playwright test tests/e2e/api/firebase-auth.api.spec.ts --project=api
+//npx playwright test -g "Exchange Token"
+
+// rmdir /s /q node_modules
+// del yarn.lock
+
+// Then:
+
+// yarn install
+
+// Step 3 — Install Playwright browsers (Windows)
+
+// yarn playwright install
+
+// Task	Linux command
+// Remove folder + contents	rm -rf node_modules
+// Remove empty folder only	rmdir node_modules
+// Remove lockfile	rm package-lock.json
+// Remove lockfile	rm package.json
+
+
+// yarn add --dev @types/node
+
+// Key Type / Folder	Value
+// Username	ezekiellinc_5CKOYq
+// Access Key	Pi6q7GwtDTcQfW6HZh8f
+// Local Folder URL 	http://ezekiellinc_5ckoyq.browserstack.com

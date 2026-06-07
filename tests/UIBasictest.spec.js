@@ -47,7 +47,7 @@ const allTitles = await cardTitles.allTextContents();
 });
 
 
-test('UI Controls', async ({ page }) => {
+test('@Web UI Controls', async ({ page }) => {
   await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
   await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
   
